@@ -1,31 +1,13 @@
 #pragma strict
 // import SimpleJSON;
+import UnityEngine.UI;
 import System.Collections.Generic;
+import System.Text;
 
-function Start () {
-    var url = "https://reqres.in/api/users?page=2";
-    var www : WWW = new WWW (url);
-    var jsonString: String;
-    var Keys : String;
-    yield www;
-    var my = www.text;
-    var jsonObject = JSON.Parse(my);
-    jsonString = jsonObject.ToString();
-    var oneBall : Ball = JsonUtility.FromJson.<Ball>(jsonString);
-    // Debug.Log(oneBall.page);
-    // Debug.Log(oneBall.total);
-    // // Debug.Log(oneBall.[data]);
-    // Debug.Log(jsonString);
 
-    var ballsJson : String = jsonString;
-    var manyBalls : Balls = JsonUtility.FromJson.<Balls>(ballsJson);
-    Debug.Log(ballsJson.length);
-    Debug.Log(jsonString.length);
-    Debug.Log(manyBalls.data[0].first_name);
-
-}
-
-public class Ball { // this is required in both cases: single and array
+// var car: GameObject;
+var ThisButton : GameObject;
+public class Ball {
     public var size : float;
     public var first_name : String;
     public var avatar : String;
@@ -36,10 +18,33 @@ public class Ball { // this is required in both cases: single and array
     public var page : int;
 }
 
-public class Balls {  // this is required only in case of array
+public class Balls {
     public var data : Ball[];
 
 }
+
+
+function Start () {
+    var url = "https://reqres.in/api/users?page=2";
+    var www : WWW = new WWW (url);
+    var jsonString: String;
+    yield www;
+    var my = www.text;
+    var jsonObject = JSON.Parse(my);
+    jsonString = jsonObject.ToString();
+    var oneBall : Ball = JsonUtility.FromJson.<Ball>(jsonString);
+    Debug.Log(oneBall.page);
+
+    var ballsJson : String = jsonString;
+    var manyBalls : Balls = JsonUtility.FromJson.<Balls>(ballsJson);
+    var name = manyBalls.data[0].first_name;
+    Debug.Log(manyBalls.data[0].avatar);
+    Debug.Log(manyBalls.data[0].first_name);
+    // Debug.Log(car.name);
+    ThisButton.GetComponentInChildren(Text).text = name;
+}
+
+
 
 
 
