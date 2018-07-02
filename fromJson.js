@@ -14,8 +14,6 @@ function Start () {
     var oneBall : Ball = JsonUtility.FromJson.<Ball>(jsonString);
     // Debug.Log(oneBall.page);
     // Debug.Log(oneBall.total);
-    // Debug.Log(oneBall.per_page);
-    // Debug.Log(oneBall.first_name);
     // // Debug.Log(oneBall.[data]);
     // Debug.Log(jsonString);
 
@@ -26,7 +24,7 @@ function Start () {
     Debug.Log(manyBalls.data[0].first_name);
 
 }
- 
+
 public class Ball { // this is required in both cases: single and array
     public var size : float;
     public var first_name : String;
@@ -38,7 +36,7 @@ public class Ball { // this is required in both cases: single and array
     public var page : int;
 }
 
-public class Balls { // this is required only in case of array
+public class Balls {  // this is required only in case of array
     public var data : Ball[];
 
 }
