@@ -6,7 +6,8 @@ import System.Text;
 
 
 // var car: GameObject;
-var ThisButton : GameObject;
+var Text1 : GameObject;
+var ButtonText : GameObject;
 public class Ball {
     public var size : float;
     public var first_name : String;
@@ -38,10 +39,12 @@ function Start () {
     var ballsJson : String = jsonString;
     var manyBalls : Balls = JsonUtility.FromJson.<Balls>(ballsJson);
     var name = manyBalls.data[0].first_name;
+    var name1 = manyBalls.data[0].last_name;
     Debug.Log(manyBalls.data[0].avatar);
     Debug.Log(manyBalls.data[0].first_name);
     // Debug.Log(car.name);
-    ThisButton.GetComponentInChildren(Text).text = name;
+    ButtonText.GetComponentInChildren(Text).text = name;
+    Text1.GetComponentInChildren(Text).text = name1;
 }
 
 
